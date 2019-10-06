@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- CSS -->
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css">
     <!-- JQUERY  -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -14,18 +16,26 @@
 
 <body>
     <div class="container">
-        <div id="intro">
-            <h1>Do you know the songs that soundtracked 2019?</h1>
-            <h3>Guess the top artists and songs of the year, streamed on Spotify and ranked on Billboard’s Hot 100.</h3>
-            <button id="start-button">Start</button>
-        </div>
-        <div id="game-content">
-            <div id="display-question"></div>
+        <div class="row m-5">
+            <div class="col-10 text-center">
+                <div id="intro">
+                    <h1>Do you know the songs that soundtracked 2019?</h1>
+                    <h3>Guess the top artists and songs of the year, streamed on Spotify and ranked on Billboard’s Hot 100.</h3>
+                    <button id="start-button">Start</button>
+                </div>
+        <div class="row">
+            <div class="col-10">
+                <div id="game-content">
+                    <div id="display-question"></div>
 
-            <ul id="display-options"></ul>
-
+                    <ul id="display-options"></ul>
+            </div>
         </div>
-        <div id="timer"></div>
+
+                </div>
+                <div id="timer"></div>
+            </div>
+        </div>
     </div>
 
     <!-- JavaScript Is Here -->

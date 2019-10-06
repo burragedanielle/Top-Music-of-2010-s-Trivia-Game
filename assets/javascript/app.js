@@ -31,24 +31,20 @@
     var time = 10;
 
     function timerStart(){
-        answered = false; 
-        var timer = setInterval(function() {
-            time--;
-            $("#timer").html(time);
-            if(answered === false && time === 0){
-                answered = true;
+        time--;
+        $("#timer").html(time);
+            if(time === 0){
                 console.log("Sorry, no more time left!")
-                clearInterval(timer);
+                clearInterval(timerStart);
+                $("#timer").hide();
                 //resetRound
-            } else if (time <= 5) {
-                $("#timer").append("<h4> You have " + time + " seconds left </h4>");
-            }
-        }, 1000);
-        
+        }   else if (time <= 5) {
+                $("#timer").html("<h4> You have " + time + " seconds left </h4>");
+            } 
     };
 
     function timerStop(){
-        clearInterval(timer);
+        clearInterval(timerStart);
     }
 
     function hideIntro() {
@@ -84,15 +80,16 @@
 
         var id = $(this).attr("id");
         if (id === correct){
-            answered = true;
-            timerStop();
-            $("#display-question").text("right!");
+            alert("you are right!");
             correctAnswer();
+            console.log(wins);
+            clearInterval(timerStart);
+            $("#timer").hide();
         } else {
-            answered = true;
             $("#display-question").text("wrong!");
             incorrectAnswer();
-            
+            clearInterval(timerStart);
+            $("#timer").hide();
         }
     })
 
@@ -101,7 +98,7 @@
     $("#start-button").click(function () {
         hideIntro();
         displayQA();
-        timerStart();
+        setInterval(timerStart, 1000); 
 
 
 
@@ -151,8 +148,6 @@ function correctAnswer(){
     wins++
     $("#display-question").hide();
     $("#display-options").hide();
-    $("#game-contents").show(); 
-    $("#game-contents").html("<p>You did it!</p>");
     // resetRound();
 };
 
