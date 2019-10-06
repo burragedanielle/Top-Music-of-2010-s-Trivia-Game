@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
     <!-- JQUERY  -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <title>Document</title>
@@ -13,119 +15,21 @@
 <body>
     <div class="container">
         <div id="intro">
-            <h1>Begin Game</h1>
-            <button id="start-button">Get Started</button>
+            <h1>Do you know the songs that soundtracked 2019?</h1>
+            <h3>Guess the top artists and songs of the year, streamed on Spotify and ranked on Billboard’s Hot 100.</h3>
+            <button id="start-button">Start</button>
         </div>
-        <div id="game-content"></div>
+        <div id="game-content">
+            <div id="display-question"></div>
+
+            <ul id="display-options"></ul>
+
+        </div>
         <div id="timer"></div>
     </div>
 
-
-
-    <!-- Javascript starts here -->
-    <script>
-
-        var questionsAnswers = [
-            {
-                question: "blah blah blah question 1",
-                guessOptions: ["pick 1", "pick 2"],
-                correctAnswer: "pick 1"
-            },
-            {
-                question: "blah blah blah question 2",
-                guessOptions: ["pick 1", "pick 2"],
-                correctAnswer: ""
-
-            },
-            {
-                question: "blah blah blah question 3 ",
-                guessOptions: ["pick 1", "pick 2"],
-                correctAnswer: ""
-            },
-            {
-                question: "blah blah blah question 4",
-                guessOptions: ["pick 1", "pick 2"],
-                correctAnswer: ""
-            }
-        ];
-
-        var time = 120; 
-        var timeRunning = false;
-            
-
-        function startClock(){
-            if(!timeRunning) {
-                intervalId = setTimeout("decrement()", 1000);
-                timeRunning = true;
-            }
-
-            count();
-            
-        }
-
-        function count(){
-            time--;
-            $("#timer").html(time);
-        }
-
-        function stopClock(){
-            clearInterval(intervalId);
-            timeRunning = false; 
-        }
-        
-        $("#game-content").hide();
-        $("#timer").hide();
-
-
-        // <!-- Goal: To create a jquery game that shows one question until player answers -->
-        //1. display a start screen
-
-        //2. on click of start button....
-        $("#start-button").click(function () {
-            // 1. hide intro
-            $("#intro").hide();
-            // 2. display questions, options, timer
-            $("#game-content").show();
-            $("#timer").show();
-            
-
-        
-            for (var round = 0; round < questionsAnswers.length; round++) {
-                var name = "question-" + round;
-                
-                // display questions
-                $("#game-content").append("<h2>" + questionsAnswers[round].question + "</h2>");
-                //display user options for guesses 
-                $("#game-content").append("<input type='radio'" + " name= '" + name + "'>" + questionsAnswers[round].guessOptions[0] + "</input>");
-                $("#game-content").append("<input type='radio'" + " name= '" + name + "'>" + questionsAnswers[round].guessOptions[1] + "</input>");
-
-            }
-
-            startClock();
-
-        });
-
-
-
-
-
-
-
-
-
-//     <!-- 3. If user selects the correct guess, they are congratulated. after a few seconds, show the next question without user input -->
-//     <!-- 4. If user runs out of time, tell the user that time's up and display the correct answer. 
-//             -- Wait a few seconds, then show the next question. -->
-//     <!-- 5. If the user chooses the wrong answer, tell user they selected the wrong option and then display the correct answer. 
-//             -- Wait a few seconds, then show the next question.-->
-//     <!-- 6. On final screen, show the number of correct answers, incorrect answers, and an option to restart the game (without reloading the page). -->
-
-
-
-
-
-
-    </script>
+    <!-- JavaScript Is Here -->
+    <script src="assets/javascript/app.js"></script>
 
 </body>
 
