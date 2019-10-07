@@ -5,99 +5,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>2019 Top Music Trivia</title>
-
+    <!-- CSS -->
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
     <!-- JQUERY  -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <title>2019 Top Music Quiz</title>
 </head>
 
 <body>
-    <div id="intro">
-        <h1 id="h1Hide">Please hide me</h1>
-        <p>testing</p>
-        <p>testing</p>
-        <p>testing</p>
-
-    </div>
-    <button id="alert">Button</button>
-    <button id="list-item">list item</button>
     <div class="container">
-        <!-- hardcode your start into html -->
-
+        <div class="row m-5">
+            <div class="col-10 text-center">
+                <div id="intro">
+                    <h1>Do you know the songs that soundtracked 2019?</h1>
+                    <h3>Guess the top artists and songs of the year, streamed on Spotify and ranked on Billboard’s Hot 100 charts.</h3>
+                    <button id="start-button">Start</button>
+                </div>
+                <div class="row">
+                    <div class="col-10">
+                        <div id="game-content">
+                            <div id="display-question"></div>
+                            <ul id="display-options"></ul>
+                        </div>
+                    </div>
+                </div>
+                <div id="timer"></div>
+            </div>
+        </div>
     </div>
 
-
-    <script>
-        // ------------- VARIABLES --------------- // 
-
-        var questionsAnswers = [
-            {
-                question: "blah blah blah question 1",
-                guessOption: ["pick 1", "pick 2"],
-                correct: "3",
-                correctTitle: "Valentina",
-                correctInfo: "Blah blah paragraph 1"
-            },
-            {
-                question: "blah blah blah question 2",
-                guessOption: ["pick 6", "pick 7"],
-                correct: "2",
-                correctTitle: "Yuki",
-                correctInfo: "Blah blah paragraph 2"
-
-            },
-            {
-                question: "blah blah blah question 3 ",
-                guessOption: ["pick 30", "pick 35"],
-                correct: "1",
-                correctTitle: "Delilah",
-                correctInfo: "Blah blah paragraph 3"
-            },
-            {
-                question: "blah blah blah question 4",
-                guessOption: ["pick 1", "pick 2"],
-                correct: "4",
-                correctTitle: "Goober",
-                correctInfo: "Blah blah paragraph 4"
-            }
-        ];
-
-        var myTimer = null;
-        var wins = 0;
-        var answered = false;
-        var index = 0;
-        var time = 10;
-        var clockRunning = false;
-
-        $("#alert").on("click", function(){
-            timerStart();
-        });
-
-        $("#list-item").on("click", function() {
-            stop();
-        });
-
-        function timerStart() {
-            if (!clockRunning) {
-                myTimer = setInterval(count, 1000);
-                clockRunning = true;
-            }
-        }
-
-        function count(){
-            time--
-            if (time === 0) {
-                stop();
-            }
-            console.log(time);
-        }
-
-        function stop(){
-            clearInterval(myTimer);
-            clockRunning = false;
-        }
-
-    </script>
+    <!-- JavaScript Is Here -->
+    <script src="assets/javascript/app.js"></script>
 
 </body>
 
