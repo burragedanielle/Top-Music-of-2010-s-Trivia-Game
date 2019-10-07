@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,8 +10,9 @@
     <!-- JQUERY  -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
+
 <body>
-    <div id="intro"> 
+    <div id="intro">
         <h1 id="h1Hide">Please hide me</h1>
         <p>testing</p>
         <p>testing</p>
@@ -18,106 +20,85 @@
 
     </div>
     <button id="alert">Button</button>
+    <button id="list-item">list item</button>
     <div class="container">
         <!-- hardcode your start into html -->
-        
+
     </div>
 
 
     <script>
+        // ------------- VARIABLES --------------- // 
 
-// hardcoded start
-// hide the title and button append first question and clues
-// hide that first question and append next question 
-var timer = 120;
+        var questionsAnswers = [
+            {
+                question: "blah blah blah question 1",
+                guessOption: ["pick 1", "pick 2"],
+                correct: "3",
+                correctTitle: "Valentina",
+                correctInfo: "Blah blah paragraph 1"
+            },
+            {
+                question: "blah blah blah question 2",
+                guessOption: ["pick 6", "pick 7"],
+                correct: "2",
+                correctTitle: "Yuki",
+                correctInfo: "Blah blah paragraph 2"
 
-function startTimer(){
-    if (!clockRunning) {
-        intervalId = setInterval(timer, 1000);
-        timer--;
-        clockRunning = true;
-    }
-}
+            },
+            {
+                question: "blah blah blah question 3 ",
+                guessOption: ["pick 30", "pick 35"],
+                correct: "1",
+                correctTitle: "Delilah",
+                correctInfo: "Blah blah paragraph 3"
+            },
+            {
+                question: "blah blah blah question 4",
+                guessOption: ["pick 1", "pick 2"],
+                correct: "4",
+                correctTitle: "Goober",
+                correctInfo: "Blah blah paragraph 4"
+            }
+        ];
 
+        var myTimer = null;
+        var wins = 0;
+        var answered = false;
+        var index = 0;
+        var time = 10;
+        var clockRunning = false;
 
-$(".container").hide();
-    $("#alert").click(function(){
+        $("#alert").on("click", function(){
+            timerStart();
+        });
 
-        $("#intro").hide();
-        $(".container").show();
-        setInterval(timer, 1000);
-        timer--;
-        console.log(timer);
-       
-    })
+        $("#list-item").on("click", function() {
+            stop();
+        });
 
-
-    var questionAnswer = [
-        {question: "blah blah blah question 1",
-        guessOptions: ["pick 1", "pick 2"],
-        correctAnswer: "pick 1"
-        }, 
-        {
-        question: "blah blah blah question 2",
-        guessOptions: ["pick 1", "pick 2"], 
-        correctAnswer: ""
-
-        }, 
-        {
-        question: "blah blah blah question 3 ",
-        guessOptions: ["pick 1", "pick 2"],
-        correctAnswer: ""
-        }, 
-        {
-        question: "blah blah blah question 4",
-        guessOptions: ["pick 1", "pick 2"],
-        correctAnswer: ""
+        function timerStart() {
+            if (!clockRunning) {
+                myTimer = setInterval(count, 1000);
+                clockRunning = true;
+            }
         }
-    ];
 
+        function count(){
+            time--
+            if (time === 0) {
+                stop();
+            }
+            console.log(time);
+        }
 
-    for (var i = 0; i < questionAnswer.length; i++){
-        console.log(questionAnswer[i].question)
-
-        $(".container").append("<h2>" + questionAnswer[i].question + "</h2>");
-        $(".container").append("<input type='radio' value= '" + questionAnswer[i].guessOptions[0] + "'" + "name='question-" + i +"''>" + questionAnswer[i].guessOptions[0] + "</input>" + "<br>");
-
-        $(".container").append("<input type='radio' value= '" + questionAnswer[i].guessOptions[1] + "'" + "name='question-" + i +"''>" + questionAnswer[i].guessOptions[1] + "</input>" + "<br>");
-        $(".container").append("<input type='radio' value= '" + questionAnswer[i].guessOptions[2] + "'" + "name='question-" + i +"''>" + questionAnswer[i].guessOptions[2] + "</input>" + "<br>");
-        $(".container").append("<input type='radio' value= '" + questionAnswer[i].guessOptions[3] + "'" + "name='question-" + i +"''>" + questionAnswer[i].guessOptions[3] + "</input>" + "<br>");
-
-
-        
-
-        if (questionAnswer[i].guessOptions[0] === correctAnswer){
-            $(".container").append("<h2>" + "You are correct!" + "</h2>");
-
-
-        };
-
-    }
-
-
+        function stop(){
+            clearInterval(myTimer);
+            clockRunning = false;
+        }
 
     </script>
 
-    <!-- build a question first and foremost and add a class later in javascript -->
-    <!-- questions in an array of objects with a for loop display all the questions-->
-
-    
-    
-    <!-- Goal: To create a jquery game that shows one question until player answers -->
-    <!-- 1. display a start screen -->
-    <!-- 2. on click of start button, display a question, options for guesses and timer -->
-    <!-- 3. If user selects the correct guess, they are congratulated. after a few seconds, show the next question without user input -->
-    <!-- 4. If user runs out of time, tell the user that time's up and display the correct answer. 
-            -- Wait a few seconds, then show the next question. -->
-    <!-- 5. If the user chooses the wrong answer, tell user they selected the wrong option and then display the correct answer. 
-            -- Wait a few seconds, then show the next question.-->
-    <!-- 6. On final screen, show the number of correct answers, incorrect answers, and an option to restart the game (without reloading the page). -->
-
-    
-   
-    
 </body>
+
 </html>
