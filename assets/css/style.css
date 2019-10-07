@@ -4,6 +4,64 @@ body{
     font-family: 'Varela Round', sans-serif;
 }
 
+#start-button {
+    border: 2px solid #7FE3E7;
+    color: #fff;
+    font-size: 1.125rem;
+    padding: 16px 32px;
+    background: transparent;
+    transition: background .3s ease, color .3s ease; 
+    margin: 30px;
+}
+
+#start-button:hover {
+    background: #7FE3E7;
+    color: #7FE3E7;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+}
+
+
+li:hover {
+    background: #7FE3E7;
+    color: #7FE3E7;
+}
+
+#display-question {
+    text-align: center;
+    line-height: 1.25;
+    margin-bottom: 30px;
+    font-size: 1.375rem;
+
+}
+
+.correct {
+    font-size: 1.375rem;
+    padding: 16px;
+    line-height: 1.1;
+    text-align: center; 
+    background: #7FE3E7;
+    color: #fff;
+}
+
+.summary {
+    font-size: 1.375rem;
+}
+
 li {
     list-style-type: none;
+    font-size: .9375rem;
+    font-weight: 400;
+    line-height: 1.1;
+    margin: 30px;
+    letter-spacing: -.5px;
+    padding: 14px;
+    display: block;
+    text-align: center; 
+    border: 2px solid #7FE3E7;
+    background: transparent;
+    transition: background .3s ease, color .3s ease; 
 }

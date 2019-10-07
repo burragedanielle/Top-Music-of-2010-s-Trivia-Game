@@ -3,23 +3,31 @@
         {
             question: "blah blah blah question 1",
             guessOption: ["pick 1", "pick 2"],
-            correct: "3"
+            correct: "3",
+            correctTitle: "Valentina",
+            correctInfo: "Blah blah paragraph 1"
         },
         {
             question: "blah blah blah question 2",
-            guessOption: ["pick 1", "pick 2"],
-            correct: "2"
+            guessOption: ["pick 6", "pick 7"],
+            correct: "2",
+            correctTitle: "Yuki", 
+            correctInfo: "Blah blah paragraph 2"
 
         },
         {
             question: "blah blah blah question 3 ",
-            guessOption: ["pick 1", "pick 2"],
-            correct: "1"
+            guessOption: ["pick 30", "pick 35"],
+            correct: "1",
+            correctTitle: "Delilah",
+            correctInfo: "Blah blah paragraph 3"
         },
         {
             question: "blah blah blah question 4",
             guessOption: ["pick 1", "pick 2"],
-            correctAnswer: "4"
+            correct: "4", 
+            correctTitle: "Goober",
+            correctInfo: "Blah blah paragraph 4"
         }
     ];
 
@@ -51,45 +59,41 @@
         $("#intro").hide();
     };
 
-    function displayQuestion(){
-        $("#display-question").show();
-        $("#display-question").append("<h2>");
-        $("h2").addClass("question-text");
-    }
-
-    // function displayOptions(){
-    //     $("#display-options").show();
-    //     $("#display-options").append("<button>");
-    //     $("button").addClass("choice-button");
-    // }
+    //use this function to display the question and answer 
 
     function displayQA(){
-
         correct = questionsAnswers[index].correct;
         var question = questionsAnswers[index].question;
 
         $("#display-question").html(question);
+
         for (var i = 0; i < questionsAnswers.length; i++) {
             var answer = questionsAnswers[index].guessOption[i];
             $("#display-options").append("<li class= guess-options id =" + i + ">" + answer + "</li>")
         }
     }
 
-    $("#display-options").on("click", ".guess-options", function (event){
-        alert("You clicked me");
+    //this function starts the game
 
+    function startGame(){
+        $("#display-question").show();
+        $("#display-options").show();
+        $("#timer").show();
+        displayQA();
+        setInterval(timerStart, 1000); 
+    };
+
+    //this function occurs when user clicks guess options 
+
+    $("#display-options").on("click", ".guess-options", function (event){
         var id = $(this).attr("id");
         if (id === correct){
             alert("you are right!");
             correctAnswer();
-            console.log(wins);
             clearInterval(timerStart);
-            $("#timer").hide();
         } else {
-            $("#display-question").text("wrong!");
-            incorrectAnswer();
             clearInterval(timerStart);
-            $("#timer").hide();
+            incorrectAnswer();
         }
     })
 
@@ -97,63 +101,52 @@
 
     $("#start-button").click(function () {
         hideIntro();
-        displayQA();
-        setInterval(timerStart, 1000); 
-
-
-
-
-        
-
-        // if (testButton === true) {
-        //     // display congratulations on the DOM 
-        //     $("#display-question").hide();
-        //     $("#display-options").hide();
-        //     timerStop();
-
-        //     $("#game-content").html("Great work! You got the right answer!");
-
-        //     //use this to include extra content, maybe a GIF
-        //     $("#game-content").append("<p>text text text text<p>");
-
-        //     wins++
-
-        //     // then replace with new question
-        // } else if (testButtonTwo === true) {
-        //     $("#display-question").hide();
-        //     $("#display-options").hide();
-
-        //     $("#game-content").html("Wrong!");
-
-        //     timerStop();
-
-        //     losses++
-
-        //     // then replace with new question
-        // } else if (timer === 10) {
-        //     $("#game-content").append("<p>Only a few seconds left!</p>");
-        // } else if (timer === 0) {
-        //     alert("Time Up!");
-        //     timerStop();
-            
-        //     $("#display-question").hide();
-        //     $("#display-options").hide();
-        //     losses++
-
-        //     $("#game-content").append("<h2>Out of Time</h2>");
-        // }
+        startGame();
     });
 
 function correctAnswer(){
-    wins++
+    console.log(index);
+    console.log(timer);
     $("#display-question").hide();
     $("#display-options").hide();
-    // resetRound();
+    $("#timer").hide();
+    
+    $("#game-content").append("<div class= correct>").html("<h2>You're right!</h2>");
+
+        for (var i = 0; i < questionsAnswers.length; i++) {
+            var correctTitle = questionsAnswers[index].correctTitle;
+            var correctInfo = questionsAnswers[index].correctInfo;
+        }
+    $("#game-content").append("<h4>" + correctTitle + "</h4>");
+    $("#game-content").append("<h4>" + correctInfo + "</h4>");
+
+    setTimeout(function(){
+        $("#game-content").hide();
+        startGame();
+
+    }, 3000);
+
+    index++
+    wins++
+    
+    // resetGame();
 };
 
 function incorrectAnswer(){
-    // resetRound();
+    resetGame();
+    console.log(index);
+    index++
+}
 
+function resetGame(){
+    $("#display-question").show();
+    $("#display-options").show();
+    if(index < questionsAnswers.length){
+        setTimeout(function (){
+            displayQA();
+
+        }, 1000)
+    }
 }
 
 
