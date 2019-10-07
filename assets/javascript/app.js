@@ -31,7 +31,7 @@
         },
         {
             question: "Which breakout Houston singer and rapper ranks 63rd on Spotify’s top listened to artists as of Oct. 1, 2019?",
-            guessOption: ["SZA", "Princess Nokia", "Lizzo", "Miley Cyrus"],
+            guessOption: ["Drake", "Princess Nokia", "Lizzo", "Miley Cyrus"],
             correct: "2", 
             correctTitle: "Lizzo",
             correctInfo: "Blah blah paragraph 4"
@@ -99,7 +99,7 @@
     var myTimer = null;
     var myTimeout = null;
     var wins = 0;
-    var answered = false; 
+    var answered = false;
     var index = 0; 
     var time = 15;
     var clockRunning = false;
@@ -121,9 +121,8 @@
             if(time === 0){
                 stop();
                 $("#timer").hide();
-                $("#game-contents").html("<h4> Sorry, no more time left! </h4>");
-                
-        }   else if (time <= 5) {
+                $("#game-contents").html("<h4> Sorry, no more time left!</h4>");
+            }   else if (time <= 5) {
                 $("#timer").html("<h4> You have " + time + " seconds left </h4>");
             } 
     };
@@ -145,7 +144,7 @@
 
         $("#display-question").html(question);
 
-        for (var i = 0; i < questionsAnswers.length; i++) {
+        for (var i = 0; i < questionsAnswers[index].guessOption.length; i++) {
             var answer = questionsAnswers[index].guessOption[i];
             $("#display-options").append("<li class= guess-options id =" + i + ">" + answer + "</li>")
         }
@@ -194,8 +193,8 @@ function correctAnswer(){
             var correctInfo = questionsAnswers[index].correctInfo;
         }
 
-    $("#game-content").append("<h4>" + correctTitle + "</h4>");
-    $("#game-content").append("<h4>" + correctInfo + "</h4>");
+    $("#game-content").html("<h4>" + correctTitle + "</h4>");
+    $("#game-content").html("<h4>" + correctInfo + "</h4>");
 
 
     myTimeout = setTimeout(function(){
